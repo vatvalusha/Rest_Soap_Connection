@@ -1,0 +1,72 @@
+<aura:component implements="flexipage:availableForAllPageTypes,force:hasRecordId,force:appHostable"
+                controller="GetAdress"
+                access="global">
+    <aura:attribute name="recordId" type="Id"/>
+    <aura:attribute name="AccountAdress" type="String"/>
+    <aura:attribute name="Flag" type="Boolean" default="true"/>
+    <aura:attribute name="wrapper" type="WrapperLocation"/>
+    <aura:attribute name="wrapperInner" type="WrapperInner"/>
+    <aura:attribute name="menuAddress" type="Boolean" default="false"/>
+    <aura:attribute name="addressInner" type="WrapperInner"/>
+
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <div>
+        <form>
+            <aura:if isTrue="{!!v.Flag}">
+                <div class="alert" role="alert">
+                {!v.wrapper.resultParse}
+                    <div style="float: right">
+                        <button class="slds-button slds-button-icon " title="settings" onclick="{!c.Update}">
+                            <lightning:icon iconName="utility:close" size="xx-small"/>
+                            <span class="slds-assistive-text">Settings</span>
+                        </button>
+                    </div>
+                </div>
+
+            </aura:if>
+            <div class="form">
+                <span class="outputText">Address: </span>
+                <ui:inputText class="text-input" value="{!v.AccountAdress}"/>
+                <br/>
+                <br/>
+                <ui:button class="buttonSave  slds-button slds-button-icon slds-button-icon-border" label="Save"
+                           press="{!c.save}"/>
+                <br/>
+            </div>
+
+            <aura:if isTrue="{!v.menuAddress}">
+                <div class="slds-dropdown-trigger slds-dropdown-trigger-click slds-is-open">
+                    <span class="underline">  probably you want </span>
+                    <button class="slds-button slds-button-icon slds-button-icon-border-filled" aria-haspopup="true"
+                            title="Show More">
+                        <lightning:icon iconName="utility:switch" size="xx-small"/>
+
+                    </button>
+                    <div class=" slds-dropdown slds-dropdown_left variant">
+                        <ul class="slds-dropdown--list" role="menu">
+                            <aura:iteration items="{!v.wrapper.wrapperInners}" var="obj" indexVar="index">
+                                <li class="slds-dropdown--item" role="presentation">
+                                    <!--<button type="button" class="button2 slds-button buttonList"-->
+                                    <!--onclick="{!c.showCaseDeleteModal}"-->
+                                    <!--id="{!obj.adresses}">{!index + 1} : {!obj.adresses}-->
+                                    <!--</button>-->
+                                    <!--<li><a onclick="{!c.showCaseDeleteModal}">{!obj.adresses}</a></li>-->
+                                    <c:AddressItem address="{!obj}"/>
+                                    <!--<li><a onclick="{!c.addressSelected}">{!v.address.adresses}</a></li>-->
+
+                                    <!--<aura:handler name="count" value="{!this}" action="{!c.counter}"/>-->
+                                </li>
+                            </aura:iteration>
+                        </ul>
+                    </div>
+                </div>
+            </aura:if>
+        </form>
+        <div class="map">
+            <c:AddressMap />
+        </div>
+    </div>
+
+
+</aura:component>

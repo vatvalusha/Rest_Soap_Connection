@@ -1,0 +1,21 @@
+<!--
+ - Created by new on 24.05.2017.
+ -->
+
+<aura:component description="AddressMap" controller="GetAdress">
+    <aura:handler event="c:AddressLoaded" action="{!c.addressLoaded}"/>
+    <aura:handler event="c:AddressSelected" action="{!c.addressSelected}"/>
+
+    <aura:attribute name="map" type="Object" access="global"/>
+
+    <ltng:require styles="/resource/leaflet/leaflet.css"
+                  scripts="/resource/leaflet/leaflet.js"/>
+    <!--afterScriptsLoaded="{!c.jsLoaded}"/>-->
+
+
+
+    <output type="text" id="query"/>
+    <div id="map"></div>
+
+
+</aura:component>

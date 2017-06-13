@@ -1,0 +1,23 @@
+<!--
+ - Created by new on 08.06.2017.
+ -->
+
+<apex:page id="OrdersDisplay" controller="RestController">
+    <apex:form>
+        <apex:pageBlock  rendered="{!orderWrapper.errorStatus != true}">
+            <apex:pageBlockButtons>
+                <apex:commandButton value="Send Orders" action="{!processSelected}" reRender="fff"/>
+            </apex:pageBlockButtons>
+            <apex:pageBlockTable value="{!orderWrapper.orderParses}" var="order" id="fff">
+                <apex:column>
+                    <apex:inputCheckbox value="{!order.selected}"/>
+                </apex:column>
+                <apex:column value="{!order.name}"/>
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+        <apex:pageBlock rendered="{!orderWrapper.errorStatus == true}">
+            <apex:outputText value="{!orderWrapper.errorMessage}"/>
+        </apex:pageBlock>
+    </apex:form>
+
+</apex:page>

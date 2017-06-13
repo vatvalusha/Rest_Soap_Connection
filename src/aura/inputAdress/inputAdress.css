@@ -1,0 +1,74 @@
+/**
+ * Created by valeriyartemenko on 22.05.17.
+ */
+.THIS {
+    height: 1000px;
+    /*font: Arial;*/
+    /*margin-top: 200px;*/
+    /*margin-left: 650px;*/
+    /*margin-right: 450px;*/
+}
+.THIS .map{
+    float:right;
+}
+
+.THIS .button2 {
+    background-color: white;
+    color: black;
+    text-align: left;
+}
+
+.THIS .button3 {
+    background-color: black;
+    color: black;
+}
+
+.THIS.button2:hover {
+    background-color: #4d87ba;
+    color: white;
+}
+
+.THIS .underline{
+    text-decoration: underline;
+}
+
+.THIS .variant {
+    width: 800px;
+    text-align: left;
+}
+
+.THIS .alert {
+    color: red;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.THIS .outputText {
+    color: green;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 600;
+}
+
+.THIS .buttonSave {
+    border-radius: 20px;
+    /*Font-Size: 16px;*/
+
+}
+
+.THIS .form {
+    width: 300%;
+}
+
+.THIS .text-input {
+    border: 1px solid #cccccc; /*цвет рамки*/
+    border-radius: 3px; /*закругление углов (общее)*/
+    -webkit-border-radius: 3px; /*закругление углов (Google Chrome)*/
+    -moz-border-radius: 3px; /*закругление углов (FireFox)*/
+    -khtml-border-radius: 3px; /*закругление углов (Safari)*/
+    background: #ffffff !important; /* желательно прописывать, так как в Chrome при сохранных данных оно может быть желтым*/
+    outline: none; /* удаляет обводку в браузерах хром(желтая) и сафари(синяя)*/
+    height: 24px; /* высота на свое усмотрение*/
+    width: 120px; /* ширина на свое усмотрение*/
+    color: #000000; /*цвет шрифта в обычном состоянии*/
+    font-size: 12px; /* Размер шрифта*/
+    font-family: Arial; /* Стиль шрифта*/
+}

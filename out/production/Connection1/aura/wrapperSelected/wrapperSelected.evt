@@ -1,0 +1,6 @@
+<!--
+ - Created by new on 24.05.2017.
+ -->
+
+<aura:event type="APPLICATION" description="wrapperSelected">
+</aura:event>

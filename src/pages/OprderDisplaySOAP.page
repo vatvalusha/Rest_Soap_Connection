@@ -1,0 +1,23 @@
+<!--
+ - Created by new on 13.06.2017.
+ -->
+
+<apex:page id="OrdersDisplaySOAP" controller="SoapController" action="{!getOrders}">
+    <apex:form>
+        <apex:pageBlock  rendered="{!response.errorStatus != true}">
+            <apex:pageBlockButtons>
+                <apex:commandButton value="Send Orders" action="{!processSelected}" reRender="fff"/>
+            </apex:pageBlockButtons>
+            <apex:pageBlockTable value="{!response.orderParses}" var="order" id="fff">
+                <apex:column>
+                    <apex:inputCheckbox value="{!order.selected}"/>
+                </apex:column>
+                <apex:column value="{!order.name}"/>
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+        <apex:pageBlock rendered="{!response.errorStatus == true}">
+            <apex:outputText value="{!response.errorMessage}"/>
+        </apex:pageBlock>
+    </apex:form>
+
+</apex:page>
