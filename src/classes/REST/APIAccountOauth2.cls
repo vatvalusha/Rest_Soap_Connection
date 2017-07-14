@@ -8,10 +8,7 @@ public with sharing class APIAccountOauth2 {
     public static final String getMethode = 'GET';
     public static final String encoding = 'UTF-8';
     public static final String contexJson = 'application/json';
-    public static String authorization {
-        get;
-        set;
-    }
+
 
     private static String oauthLogin(String loginUri, String clientId, String clientSecret, String username, String password) {
 
@@ -25,9 +22,10 @@ public with sharing class APIAccountOauth2 {
                         '&username=' + EncodingUtil.urlEncode(username, encoding) +
                         '&password=' + EncodingUtil.urlEncode(password, encoding)
         );
-
         Http http = new Http();
         HTTPResponse res = http.send(req);
+        System.debug('TOKEN' + res.getBody());
+
         JSONParser jsonParser = JSON.createParser(res.getBody());
         jsonParser.nextToken();
         jsonParser.nextToken();
@@ -44,43 +42,44 @@ public with sharing class APIAccountOauth2 {
                 Label.username,
                 Label.password);
         return accessToken;
-
     }
 
-    public static String restTest() {
-
+    public static HttpResponse getResponseGet( ) {
         String accessToken = authorization();
         HttpRequest req = new HttpRequest();
         req.setMethod(getMethode);
         req.setEndpoint(Label.setEndpoint);
+        req.setHeader('Content-Type', contexJson);
         req.setHeader('Authorization', 'Bearer ' + accessToken);
         Http http = new Http();
         HTTPResponse res = http.send(req);
-        System.debug('Status: ');
+        return res;
+    }
+
+    public static HttpResponse getResponsePost(String listForSend) {
+        String accessToken = authorization();
+        HttpRequest req = new HttpRequest();
+        HTTPResponse res = new HTTPResponse();
+        Http http = new Http();
+        req.setEndpoint(Label.setEndpoint);
+        req.setMethod(postMethode);
+        req.setHeader('Content-Type', contexJson);
+        req.setHeader('Authorization', 'Bearer ' + accessToken);
+        req.setBody(listForSend);
+        res = http.send(req);
+        return res;
+    }
+
+    public static String restTest() {
+        HttpResponse res = getResponseGet();
+        System.debug('Status: ' + res.getBody());
         return res.getBody();
     }
 
     public static String orderList(List<OrderParse> orders) {
         String listForSend = JSON.serialize(orders);
-        String accessToken = authorization();
-        HttpRequest req = new HttpRequest();
-        HTTPResponse res = new HTTPResponse();
-        Http http = new Http();
+        HttpResponse res = getResponsePost(listForSend);
 
-
-        req.setEndpoint(Label.setEndpoint);
-        req.setMethod(postMethode);
-        req.setHeader('Content-Type', contexJson);
-        req.setHeader('Authorization', 'Bearer ' + accessToken);
-        System.debug('LISTOVOCKA' + listForSend);
-        req.setBody(listForSend);
-
-        try {
-            res = http.send(req);
-        } catch (System.CalloutException e) {
-            System.debug('Callout error: ' + e);
-            System.debug(res.toString());
-        }
         System.debug('BODY: ' + res.getBody());
         System.debug('Status: ' + res.toString());
 

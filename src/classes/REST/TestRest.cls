@@ -3,19 +3,28 @@
  */
 @RestResource(urlMapping='/Product/*')
 global with sharing class TestRest {
+
+
+    global static List<Product2> getproductList(){
+        return [SELECT name, id, ProductCode FROM Product2];
+    }
     @HttpGet
     global static ProductWrapper doGet() {
-        List<Product> products = new List<Product>();
+        RestRequest req = RestContext.request;
+        List<Product2> result;
         RestResponse res = RestContext.response;
-        List<Product2> result = [
-                SELECT
-                        name,
-                        id,
-                        ProductCode
-                FROM
-                        Product2
-        ];
-//        List<Product2> result = new List<Product2>();
+        List<Product> products = new List<Product>();
+        String productId = req.requestURI.substring(req.requestURI.lastIndexOf('/')+1);
+        if(productId == '') {
+            result = [SELECT
+                    name,
+                    id,
+                    ProductCode
+            FROM
+                    Product2];
+        }else {
+            result = [SELECT name, id, ProductCode FROM Product2 WHERE id =: productId];
+        }
         try {
             if (result.size() == 0) {
                 throw new CustmException('No products');

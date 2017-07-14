@@ -12,5 +12,4 @@ public with sharing class SoapConection {
         myWebservice.SessionHeader = webserviceSessionHeader;
         return myWebservice;
     }
-
 }

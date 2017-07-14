@@ -4,23 +4,12 @@
 
 public with sharing class RestController {
 
-    public static final String idParam = 'id';
-    public static final String statusParam = 'Status__c';
-    public static final String nameParam = 'Name';
 
 
-    public orderWrapper orderWrapper {
-        get;
-        set;
-    }
-    public String response {
-        get;
-        set;
-    }
+    public orderWrapper orderWrapper { get; set; }
+    public String response { get; set; }
 
-    public RestController() {
-        orderWrapper = getOrders();
-    }
+    public RestController() { orderWrapper = getOrders();}
 
     public static orderWrapper getOrders() {
         OrderWrapper orderWp = (OrderWrapper) JSON.deserialize(APIAccountOauth2.restTest(), OrderWrapper.class);

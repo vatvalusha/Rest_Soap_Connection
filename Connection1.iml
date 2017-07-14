@@ -109,9 +109,6 @@
                             <option name="name" value="HelloWorldTestClass" />
                           </MetadataEntry>
                           <MetadataEntry>
-                            <option name="name" value="MockHttpResponseGenerator" />
-                          </MetadataEntry>
-                          <MetadataEntry>
                             <option name="name" value="MyContactListController" />
                           </MetadataEntry>
                           <MetadataEntry>
@@ -200,6 +197,7 @@
                           </MetadataEntry>
                           <MetadataEntry>
                             <option name="name" value="Test" />
+                            <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
                             <option name="name" value="TestCon" />
@@ -265,6 +263,46 @@
                           </MetadataEntry>
                           <MetadataEntry>
                             <option name="name" value="wrapperClassController" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="RestTest" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="MockHttpResponseGeneratorRest" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="MockAutorization" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="WebServicwRestTest" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="TestRestController" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="MockPost" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="MyBatchClass" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="LeadProcessor" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="scheduledMerge" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="BatcheTest" />
+                            <option name="selected" value="true" />
                           </MetadataEntry>
                         </list>
                       </option>
