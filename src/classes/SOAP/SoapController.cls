@@ -41,4 +41,21 @@ public with sharing class SoapController {
         return null;
     }
 
+    //For test git
+    public static void updateInstallmentStatuseField(List<Installment__c> installmentsNew, List<Installment__c> installmentsOld) {
+        for (Integer i = 0; i < installmentsNew.size(); i++) {
+            Integer dayLeft = getDaysBetweenTimestampAndDueDate(Datetime.valueOf(system.now()), installmentsNew.get(i).DueDate__c);
+            if (installmentsNew.get(i).AmountReceived__c >= installmentsOld.get(i).AmountDue__c && dayLeft > 0) {
+                installmentsNew.get(i).Timestamp__c = Datetime.valueOf(system.now());
+                installmentsNew.get(i).InstallmentStatus__c = PAID;
+            } else if (installmentsNew.get(i).AmountReceived__c != installmentsOld.get(i).AmountDue__c && dayLeft <= 0) {
+                installmentsNew.get(i).InstallmentStatus__c = OVERDUE;
+            } else if(installmentsNew.get(i).AmountReceived__c == installmentsOld.get(i).AmountDue__c && dayLeft <= 0) {
+                installmentsNew.get(i).InstallmentStatus__c = OVERDUE;
+            }else {
+                installmentsNew.get(i).InstallmentStatus__c = OPEN;
+            }
+        }
+    }
+
 }
